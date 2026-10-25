@@ -1,0 +1,163 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamer Zone | Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #1b2038 0%, #0c0e17 100%);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(22, 27, 46, 0.95);
+      border: 1px solid #ff4655;
+      box-shadow: 0 0 25px rgba(255, 70, 85, 0.35);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 380px;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    .logo-badge {
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #00f2fe;
+      border: 1px solid #00f2fe;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .input-box {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .input-box label {
+      display: block;
+      font-size: 12px;
+      color: #8f9ca7;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px 14px;
+      background: #0d111e;
+      border: 1px solid #2d3748;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-box input:focus {
+      border-color: #00f2fe;
+      box-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #ff4655, #ff7300);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);
+    }
+
+    .toggle-text {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #718096;
+    }
+
+    .toggle-text span {
+      color: #00f2fe;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="logo-badge">Player Auth</div>
+    <h2 id="form-title">Login</h2>
+
+    <form id="auth-form" onsubmit="handleAuth(event)">
+      <div class="input-box">
+        <label>Player ID / Email</label>
+        <input type="text" id="uid" placeholder="Enter gamer tag or email" required>
+      </div>
+
+      <div class="input-box">
+        <label>Access Key</label>
+        <input type="password" id="pass" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="btn-login" id="submit-btn">Enter Game</button>
+    </form>
+
+    <p class="toggle-text">
+      <span id="switch-link" onclick="toggleMode()">Don't have an ID? Create Account</span>
+    </p>
+  </div>
+
+  <script>
+    let isSignUp = false;
+
+    function toggleMode() {
+      isSignUp = !isSignUp;
+      document.getElementById('form-title').innerText = isSignUp ? 'Create ID' : 'Login';
+      document.getElementById('submit-btn').innerText = isSignUp ? 'Register' : 'Enter Game';
+      document.getElementById('switch-link').innerText = isSignUp 
+        ? 'Already have an ID? Login' 
+        : "Don't have an ID? Create Account";
+    }
+
+    function handleAuth(e) {
+      e.preventDefault();
+      const user = document.getElementById('uid').value;
+      alert((isSignUp ? "Account registered: " : "Logged in as: ") + user);
+    }
+  </script>
+
+</body>
+</html>
